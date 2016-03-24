@@ -1,0 +1,17 @@
+% EDGE_TO_CENTER (object, x, y)
+
+function object = edge_to_center (object, x, y)
+% Bottom left
+bl_x = x - object.width/2;
+bl_y = y - object.height/2;
+% Top left
+tl_x = x - object.width/2;
+tl_y = y + object.height/2;
+% Top right
+tr_x = x + object.width/2;
+tr_y = y + object.height/2;
+% Bottom right
+br_x = x + object.width/2;
+br_y = y - object.height/2;
+object.corners_x = [bl_x, tl_x, tr_x, br_x];
+object.corners_y = [bl_y, tl_y, tr_y, br_y];

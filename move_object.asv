@@ -1,0 +1,16 @@
+%% MOVE_OBJECT (object, dx, dy) moves object dx an dy units
+function [] = move_object (object, dx, dy)
+
+bl_x = pos_x-mass.width/2;
+bl_y = pos_y-mass.height/2;
+% Top left
+tl_x = pos_x-mass.width/2;
+tl_y = pos_y+mass.height/2;
+% Top right
+tr_x = pos_x+mass.width/2;
+tr_y = pos_y+mass.height/2;
+% Bottom right
+br_x = pos_x+mass.width/2;
+br_y = pos_y-mass.height/2;
+mass.corners_x = [bl_x, tl_x, tr_x, br_x];
+mass.corners_y = [bl_y, tl_y, tr_y, br_y];
