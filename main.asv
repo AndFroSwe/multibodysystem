@@ -8,16 +8,14 @@ close all, clear all, clc
 
 % Animation
 % Set these parameters
-fps = 60; % Number of frames pre second in animation
+fps = 30; % Number of frames pre second in animation
 % Calculated parameters
 pause_time = fps^-1;
 
 %% Draw system
 figure
 for x = 1:100
-    hold off
     draw_rectangle(x, 1, 2, 2)
-    hold off
     axis([0 110 -10 10])
     pause(pause_time)
 end
