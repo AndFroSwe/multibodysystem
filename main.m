@@ -9,13 +9,20 @@ pos_y = 4;
 mass_width = 6;
 mass_heigth = 6;
 
+% Must be set here to enable multiple objects 
+figure_handle = figure
+hold on
+
 % Create masses in system
 mass1 = create_mass(pos_x, pos_y, mass_width, mass_heigth, 'r')
 mass2 = create_mass(pos_x+4, pos_y+4, mass_width, mass_heigth, 'b')
 
-axis([-60 60 -60 60]) %// adjust as needed, to cover the desired area
-axis manual %// same scale in both axes
+% Animation options
+axis([-60 60 -60 60]) % Adjust as needed, to cover the desired area
+axis manual % Stop automatic axis size
+
 for t = linspace(0,40,500)
+    % Update positions
     set_object_position(mass1, t, t)
     set_object_position(mass2, -t, -t)
     
