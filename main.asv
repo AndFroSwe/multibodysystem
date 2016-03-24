@@ -3,20 +3,31 @@ close all, clear all, clc
 % Draws a multibody sytem and animates the trajectories of the part of the
 % system
 
+% Input parameters 
+pos_x = 4;
+pos_y = 4;
+mass_width = 6;
+mass_heigth = 6;
+% Add to vector
+corners_x = [pos_x-mass_width/2,... % Left bottom
+            pos_x-mass_width/2,...  % Left top
+            pos_x+mass_width/2,...  % Right top
+            pos_x+mass_width/2]     % Right bottom
+corners_x = [pos_x-mass_width/2,... % Left bottom
+            pos_x-mass_width/2,...  % Left top
+            pos_x+mass_width/2,...  % Right top
+            pos_x+mass_width/2]     % Right bottom
+        
+
 % Create masses in system
-
-
-% Animation
-% Set these parameters
-fps = 30; % Number of frames pre second in animation
-% Calculated parameters
-pause_time = fps^-1;
-
-%% Draw system
-figure
-for x = 1:100
-    draw_rectangle(x, 1, 2, 2)
-    axis([0 110 -10 10])
-    pause(pause_time)
+h = fill(,...
+    [pos_y-mass_width/2, pos_y+mass_width/2, pos_y+mass_width/2, pos_y-mass_width/2],...
+    'r')
+axis([0 60 0 60]) %// adjust as needed, to cover the desired area
+axis equal %// same scale in both axes
+for t = linspace(0,40,500)
+    x = pos_x + t %// update x
+    y = pos_y + t %// update y
+    set(h, 'Vertices', [x(:) y(:)]) %// change object's position
+    drawnow %// probably not needed after pause. Just in case
 end
-
