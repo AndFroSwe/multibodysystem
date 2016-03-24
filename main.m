@@ -15,7 +15,7 @@ mass1 = create_mass(pos_x, pos_y, mass_width, mass_heigth, 'r')
 axis([0 60 0 60]) %// adjust as needed, to cover the desired area
 axis manual %// same scale in both axes
 for t = linspace(0,40,500)
-    move_object(mass1, t, t)
+    set_object_position(mass1, t, t)
     drawnow limitrate % Update rate 20 fps
     drawnow % Update plot with new positions
 end

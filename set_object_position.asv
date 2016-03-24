@@ -1,0 +1,9 @@
+%% MOVE_OBJECT (object, x, y) sets object absolute position.
+function [] = set_object_position (object, x, y)
+
+% Set coordinate vectors of object
+object.corners_x = object.corners_x + dx;
+object.corners_y = object.corners_y + dy;
+% Update object properties
+set(object.handle, 'Vertices', [object.corners_x(:),...
+                                object.corners_y(:)])
