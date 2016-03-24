@@ -1,6 +1,18 @@
-%% CREATE_MASS(pos_x, pos_y, mass_width, mass_heigth) creates a mass object 
-% with center position pos_x and pos_y. Returns a struct with properties
+%% CREATE_MASS(pos_x, pos_y, mass_width, mass_heigth, color) creates a mass object 
+% with center position pos_x and pos_y and color '[color]'. Returns a struct with properties
 % and handle.
+classdef create_mass
+    properties 
+        start_x
+        start_y
+        
+        
+
+
+
+
+
+function mass = create_mass (pos_x, pos_y, mass_width, mass_height, color)
 
 % Create empty mass object
 mass = struct();
@@ -9,21 +21,8 @@ mass.start_x = pos_x;
 mass.start_y = pos_y;
 mass.width = mass_width;
 mass.height = mass_height;
-% Add corner coordinates to struct
-% Bottom left
-bl_x = pos_x-mass.width/2;
-bl_y = pos_y-mass.heigth/2;
-% Top left
-tl_x = pos_x-mass.width/2;
-tl_y = pos_y+mass.heigth/2;
-% Top right
-tr_x = pos_x+mass.width/2;
-tr_y = pos_y+mass.heigth/2;
-% Bottom right
-br_x = pos_x+mass.width/2;
-br_y = pos_y-mass.heigth/2;
-mass.corners_x = [bl_x, tl_x, tr_x, br_x];
-mass.corners_y = [bl_y, tl_y, tr_y, br_y];
+% Add current corner coordinates to struct
+[mass.corners_x, mass.corners_y] = edge_to_center(mass, pos_x, pos_y);
 
-% Draw object and 
-mass.handle = 
+% Draw object and create handle
+mass.handle = fill(mass.corners_x, mass.corners_y, color); 
