@@ -16,18 +16,21 @@ hold on
 % Create masses in system
 mass1 = create_mass(pos_x, pos_y, mass_width, mass_heigth, 'r');
 mass2 = create_mass(pos_x+10, pos_y+10, mass_width, mass_heigth, 'b');
+mass3 = patch([mass1.x mass1.y;],...
+               [mass2.x mass2.y;], 'g')
 
 % Connections
-connect1 = fill([mass1.x mass2.x],[ mass1.y mass2.y], 'r')
+
 % Animation options
 axis([-60 60 -60 60]) % Adjust as needed, to cover the desired area
 axis manual % Stop automatic axis size
 
 for t = linspace(0,40,500)
     % Update positions
-    mass1.absolute_position(t, t)
+    mass1.absolute_position(sqrt(t), -sqrt(t))
     mass2.absolute_position(-t, -t)
-    set(connect1, 'Vertices', [mass1.x mass2.x; mass1.y mass2.y]);
+    set(mass3, 'Vertices', [mass1.x mass1.y;...
+                                   mass2.x mass2.y;])
     % Update frame
     drawnow limitrate % Update rate 20 fps
     drawnow % Update plot with new positions
