@@ -8,11 +8,9 @@ mass = struct();
 % Fill object with properties
 mass.start_x = pos_x;
 mass.start_y = pos_y;
-mass.x = pos_x; % Current position
-mass.y = pos_y; % Current position
 mass.width = mass_width;
 mass.height = mass_height;
-% Add corner coordinates to struct
+% Add current corner coordinates to struct
 [mass.corners_x, mass.corners_y] = edge_to_center(mass, pos_x, pos_y);
 
 % Draw object and create handle
