@@ -22,5 +22,21 @@ classdef create_mass
             % Draw object and create handle
             mass.handle = fill(mass.corners_x, mass.corners_y, color); 
         end
+        function [] = absolute_position(mass, x, y)
+            % Set coordinate vectors of object
+            [mass.corners_x, mass.corners_y] = edge_to_center(mass, x, y);
+            % Update object properties
+            set(mass.handle, 'Vertices', [mass.corners_x(:),...
+                                            mass.corners_y(:)]);
+        end
+        function [] = increment_position(mass, dx, dy)
+            % Set coordinate vectors of object
+            mass.corners_x = mass.corners_x + dx;
+            mass.corners_y = mass.corners_y + dy;
+            % Update object properties
+            set(mass.handle, 'Vertices', [mass.corners_x(:),...
+                                            mass.corners_y(:)])
+        end
+
     end
 end

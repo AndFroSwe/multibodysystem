@@ -15,7 +15,7 @@ hold on
 
 % Create masses in system
 mass1 = create_mass(pos_x, pos_y, mass_width, mass_heigth, 'r')
-mass2 = create_mass(pos_x+4, pos_y+4, mass_width, mass_heigth, 'b')
+mass2 = create_mass(pos_x+10, pos_y+10, mass_width, mass_heigth, 'b')
 
 % Animation options
 axis([-60 60 -60 60]) % Adjust as needed, to cover the desired area
@@ -23,8 +23,8 @@ axis manual % Stop automatic axis size
 
 for t = linspace(0,40,500)
     % Update positions
-    set_object_position(mass1, t, t)
-    set_object_position(mass2, -t, -t)
+    mass1.absolute_position(t, t)
+    mass2.increment_position(-t, -t)
     
     % Update frame
     drawnow limitrate % Update rate 20 fps
