@@ -77,5 +77,11 @@ classdef create_mass < handle
             set(obj.handle, 'Vertices', [obj.vertex_x(:),...
                                             obj.vertex_y(:)])
         end
+        % Rotate object deg degrees
+        function rotate_object(obj, deg)
+            rot_axis = [0 0 1]; % Rotational axis [x y z]
+            origin_point = [obj.x obj.y 0]; % Cartesian point of rotation origin
+            rotate(obj.handle, rot_axis, deg, origin_point);
+        end
     end
 end

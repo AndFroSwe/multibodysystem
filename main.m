@@ -18,6 +18,7 @@ mass2 = create_mass(r*sin(1), -r*cos(1), 0.05, 0.05, 'y', 'ellipse');
 connection1 = create_connection(mass1, mass2);
 
 % Animation options
+fps = 30;   % Animation frames per second
 axis manual % Stop automatic axis size
 axis equal
 axis([-0.5 0.5 -0.5 0]) % Adjust as needed, to cover the desired area
@@ -29,11 +30,12 @@ sim('pendulum')
 disp('Running simulation...')
 for i = 1:length(sim_theta.Data)
     % Update positions
+    mass1.rotate_object(-3);
     mass2.absolute_position(r*sin(sim_theta.Data(i)), -r*cos(sim_theta.Data(i)))
     connection1.draw_line()
     % Update frame
     drawnow limitrate % Update rate 20 fps
     drawnow % Update plot with new positions
-    pause(1/30)
+    pause(fps^-1)
 end
 disp('Simulation done')

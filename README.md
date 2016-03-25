@@ -3,8 +3,6 @@
 Matlab script for animation of masses. Object oriented for easy adding of masses and connections.
 Can be integrated with Simulink for simulation results.
 
-TODO: Allow of rotation of objects.
-
 TODO: Allow for creation of springs.
 
 TODO: Allow for creation of dampers.
