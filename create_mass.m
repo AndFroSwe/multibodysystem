@@ -23,8 +23,8 @@ classdef create_mass < handle
             obj.y = pos_y;
             obj.width = mass_width;
             obj.height = mass_height;
-            % Switch cases for different shapes
             obj.shape = shape;
+            % Switch cases for different shapes
             % RECTANGLE
             if strcmp(shape, 'rectangle')
                 % Add current corner coordinates to struct

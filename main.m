@@ -14,7 +14,7 @@ hold on
 mass1 = create_mass(0, 0, 0.1, 0.1, 'bl', 'rectangle');
 mass2 = create_mass(r*sin(1), -r*cos(1), 0.05, 0.05, 'y', 'ellipse');
 
-% Connections;
+% Connections
 connection1 = create_connection(mass1, mass2);
 
 % Animation options
