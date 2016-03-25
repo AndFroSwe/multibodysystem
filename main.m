@@ -7,14 +7,14 @@ close all, clear all, clc
 r = 0.3;
 
 % Must be set here to enable multiple objects 
-figure_handle = figure
+figure_handle = figure;
 hold on
 
 % Create masses in system
 mass1 = create_mass(0, 0, 0.1, 0.1, 'bl', 'rectangle');
-mass2 = create_mass(r*sin(1), -r*cos(1), 0.05, 0.05, 'b', 'ellipse');
+mass2 = create_mass(r*sin(1), -r*cos(1), 0.05, 0.05, 'y', 'ellipse');
 
-% Connections
+% Connections;
 connection1 = create_connection(mass1, mass2);
 
 % Animation options
@@ -22,8 +22,11 @@ axis manual % Stop automatic axis size
 axis equal
 axis([-0.5 0.5 -0.5 0]) % Adjust as needed, to cover the desired area
 
+% Run simulation
 sim('pendulum')
 
+% Animation loop
+disp('Running simulation...')
 for i = 1:length(sim_theta.Data)
     % Update positions
     mass2.absolute_position(r*sin(sim_theta.Data(i)), -r*cos(sim_theta.Data(i)))
@@ -33,3 +36,4 @@ for i = 1:length(sim_theta.Data)
     drawnow % Update plot with new positions
     pause(1/30)
 end
+disp('Simulation done')

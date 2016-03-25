@@ -11,11 +11,12 @@ classdef create_connection < handle
         function obj = create_connection(first, second)
             obj.anchor_1 = first;
             obj.anchor_2 = second;
+            % Draw patch object
             obj.handle = patch([obj.anchor_1.x obj.anchor_2.x],...
                                [obj.anchor_1.y obj.anchor_2.y],...
                                'bl');
         end
-        % Draw line updates the line. Must be run after anchor objects have
+        % Updates the line. Must be run after anchor objects have
         % been updated with new positions.
         function draw_line(obj)
             set(obj.handle, 'Vertices', [obj.anchor_1.x obj.anchor_1.y;...
