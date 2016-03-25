@@ -10,3 +10,5 @@ TODO: Allow for creation of dampers.
 TODO: Make connections end at edges of masses.
 
 TODO: When importing simulation data from Simulink, automise time scale to match desired fps of animation (right now adaptive step length cant be used).
+
+TODO: Allow rotation and translation at the same time
