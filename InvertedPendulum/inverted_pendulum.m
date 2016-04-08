@@ -10,18 +10,18 @@ hold on
 %%%%%%% Input parameters %%%%%%%%%%%
 M = 0.5; % Mass of big cart [kg]
 m = 0.2; % Mass of pendulum [kg]
-b = 0.1; % Linear friction coefficient translation [N/m/s]
-d = 0.2; % Linear friction coefficient rotation 
+b = 0.01; % Linear friction coefficient translation [N/m/s]
+d = 0.02; % Linear friction coefficient rotation 
 l = 0.3; % Length of pendulum [m]
-F1 = 0;  % Force applied to cart [N]
+F1 = 5;  % Force applied to cart [N]
 F2 = 0; % Force applied to pendulum [N]
-F1_time = 0; % Time for step
+F1_time = 3; % Time for step
 F2_time = 0; % Time for step
-theta_init = 0.1; % Initial displacement from equilibrium [rad]
+theta_init = pi/6; % Initial displacement from equilibrium [rad]
 g = 9.82; % Gravity acceleration [m/s^2]
 
 %%% Run simulation %%%
-simtime = 10;
+simtime = 5;
 sim('InvertedPendulum.slx')
 theta = sim_theta.Data;
 x = sim_x.Data;
@@ -41,7 +41,7 @@ axis([xmin xmax ymin ymax]) % Adjust as needed, to cover the desired area
 
 %%% Create masses in system %%%
 cart = create_mass(0, 0, 0.1, 0.1, 'b', 'rectangle');
-pendulum = create_mass(l*cos(theta_init), l*sin(theta_init),...
+pendulum = create_mass(l*sin(theta_init), l*cos(theta_init),...
                         0.05, 0.05, 'y', 'ellipse')
 
 %%% Connections %%%
@@ -58,7 +58,7 @@ disp('Running simulation...')
 for i = 1:length(animation_iteration)
     % Insert animation here %
     cart.absolute_position(x(i), 0);
-    pendulum.absolute_position(x(i)+l*cos(theta(i)+pi/2), l*sin(theta(i)+pi/2))
+    pendulum.absolute_position(x(i)+l*sin(theta(i)), l*cos(theta(i)))
     shaft.draw_line()
     %%%%%%%%%%%%%%%%%%%%%%%%%
     
