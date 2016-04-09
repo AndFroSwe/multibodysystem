@@ -13,16 +13,15 @@ m = 0.2; % Mass of pendulum [kg]
 b = 0.01; % Linear friction coefficient translation [N/m/s]
 d = 0.02; % Linear friction coefficient rotation 
 l = 0.3; % Length of pendulum [m]
-F1 = 0;  % Force applied to cart [N]
-F2 = 2; % Force applied to pendulum [N]
-F1_time = 0; % Time for step
-F2_time = 2; % Time for step
-theta_init = 0; % Initial displacement from equilibrium [rad]
+ref = 0;  % Theta reference value [rad]
+F2 = -1; % Force applied to pendulum [N]
+F2_time = 4; % Time for step
+theta_init = 0.2; % Initial displacement from equilibrium [rad]
 g = 9.82; % Gravity acceleration [m/s^2]
 
 %%% Run simulation %%%
-simtime = 5;
-sim('InvertedPendulum_Impulse.slx')
+simtime = 8;
+sim('InvertedPendulum_PID.slx')
 theta = sim_theta.Data;
 x = sim_x.Data;
 
